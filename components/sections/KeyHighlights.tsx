@@ -40,12 +40,6 @@ const highlights = [
 export default function KeyHighlights() {
   return (
     <section className="py-28 bg-white relative overflow-hidden">
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 opacity-[0.025]" style={{
-        backgroundImage: 'linear-gradient(#0A0A0A 1px, transparent 1px), linear-gradient(90deg, #0A0A0A 1px, transparent 1px)',
-        backgroundSize: '40px 40px',
-      }} />
-
       <div className="site relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,35 +72,35 @@ export default function KeyHighlights() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.06 * i, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="group relative bg-[#FAFAFA] hover:bg-white border border-transparent hover:border-[#E5E7EB] rounded-2xl p-6 transition-all duration-500 hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] cursor-default"
+                className="group relative bg-white border border-[#E5E7EB] rounded-2xl p-6 transition-all duration-500 hover:border-[#E8590C]/30 hover:shadow-[0_12px_40px_rgba(232,89,12,0.08)] cursor-default"
               >
                 {/* Top row: number + arrow */}
                 <div className="flex items-center justify-between mb-5">
-                  <span className="text-[11px] font-bold text-[#D1D5DB] uppercase tracking-[0.15em]">{item.num}</span>
-                  <div className="w-7 h-7 rounded-full bg-transparent group-hover:bg-[#FFF7ED] flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0">
+                  <span className="text-[11px] font-bold text-[#9CA3AF] group-hover:text-[#E8590C] uppercase tracking-[0.15em] transition-colors duration-300">{item.num}</span>
+                  <div className="w-7 h-7 rounded-full bg-[#F3F4F6] group-hover:bg-[#FFF7ED] flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0">
                     <ArrowUpRight className="w-3.5 h-3.5 text-[#E8590C]" />
                   </div>
                 </div>
 
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-white group-hover:bg-[#FFF7ED] border border-[#E5E7EB] group-hover:border-[#E8590C]/20 flex items-center justify-center mb-5 transition-all duration-300 shadow-sm group-hover:shadow-md">
-                  <Icon className="w-5 h-5 text-[#9CA3AF] group-hover:text-[#E8590C] transition-colors duration-300" strokeWidth={1.8} />
+                <div className="w-12 h-12 rounded-xl bg-[#F9FAFB] group-hover:bg-[#FFF7ED] border border-[#E5E7EB] group-hover:border-[#E8590C]/20 flex items-center justify-center mb-5 transition-all duration-300">
+                  <Icon className="w-5 h-5 text-[#6B7280] group-hover:text-[#E8590C] transition-colors duration-300" strokeWidth={1.8} />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-[15px] font-bold text-[#0A0A0A] mb-2 group-hover:text-[#E8590C] transition-colors duration-300">
+                <h3 className="text-[15px] font-bold text-[#0A0A0A] mb-2">
                   {item.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-[13px] text-[#9CA3AF] leading-relaxed mb-5 group-hover:text-[#6B7280] transition-colors duration-300">
+                <p className="text-[13px] text-[#6B7280] leading-relaxed mb-5">
                   {item.desc}
                 </p>
 
                 {/* Bottom metric */}
-                <div className="pt-4 border-t border-[#F3F4F6] group-hover:border-[#E5E7EB] transition-colors duration-300 flex items-baseline gap-2">
+                <div className="pt-4 border-t border-[#F3F4F6] group-hover:border-[#E8590C]/10 transition-colors duration-300 flex items-baseline gap-2">
                   <span className="text-[22px] font-black text-[#0A0A0A] leading-none">{item.metric}</span>
-                  <span className="text-[10px] font-bold text-[#D1D5DB] uppercase tracking-[0.15em]">{item.metricLabel}</span>
+                  <span className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-[0.15em]">{item.metricLabel}</span>
                 </div>
               </motion.div>
             );
