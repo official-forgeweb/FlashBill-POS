@@ -4,7 +4,7 @@ interface MarkerProps {
 
 export default function Marker({ className = '' }: MarkerProps) {
   return (
-    <span className={`text-brand-blue text-lg select-none ${className}`} aria-hidden="true">
+    <span className={`text-[#D4793A] text-lg select-none ${className}`} aria-hidden="true">
       ◉
     </span>
   );

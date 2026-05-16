@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import './globals.css';
@@ -11,9 +11,17 @@ const inter = Inter({
   display: 'swap',
 });
 
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: {
-    default: 'FlashBill POS — Fast. Reliable. Yours.',
+    default: 'FlashBill POS — The Future of Billing',
     template: '%s | FlashBill POS',
   },
   description: 'FlashBill is an offline-first POS & billing software for restaurants, cafes, and retail businesses. One-time payment, lifetime ownership. Built by ForgeWeb.',
@@ -23,7 +31,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     siteName: 'FlashBill POS',
-    title: 'FlashBill POS — Fast. Reliable. Yours.',
+    title: 'FlashBill POS — The Future of Billing',
     description: 'Offline-first POS & billing software. One-time payment, lifetime ownership.',
   },
 };
@@ -34,8 +42,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="min-h-screen flex flex-col font-sans antialiased">
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <body className="min-h-screen flex flex-col font-sans antialiased bg-[#FAFAFA] text-[#0A0A0A]">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

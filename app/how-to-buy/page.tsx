@@ -4,39 +4,92 @@ import { MessageCircle, CreditCard, Download, Headphones, CheckCircle } from 'lu
 import Link from 'next/link';
 
 const steps = [
-  { num:'01', title:'Contact Us', desc:'Reach out via WhatsApp, email, or our contact form.', icon:MessageCircle },
-  { num:'02', title:'Choose & Pay', desc:'Select your plan. One-time payment via UPI, bank transfer, or card.', icon:CreditCard },
-  { num:'03', title:'Installation', desc:'Our team installs FlashBill and configures everything. Under 24 hours.', icon:Download },
-  { num:'04', title:'Go Live', desc:'Start billing immediately with complete staff training.', icon:Headphones },
+  { num: '01', title: 'Contact Us', desc: 'Reach out via WhatsApp, email, or our contact form.', icon: MessageCircle },
+  { num: '02', title: 'Choose & Pay', desc: 'Select your plan. One-time payment via UPI, bank transfer, or card.', icon: CreditCard },
+  { num: '03', title: 'Installation', desc: 'Our team installs FlashBill and configures everything. Under 24 hours.', icon: Download },
+  { num: '04', title: 'Go Live', desc: 'Start billing immediately with complete staff training.', icon: Headphones },
 ];
-const bens = ['No recurring costs — pay once, own forever','Full data ownership on your device','Predictable investment, no surprise fees','Regular updates at no extra cost'];
+const bens = [
+  'No recurring costs — pay once, own forever',
+  'Full data ownership on your device',
+  'Predictable investment, no surprise fees',
+  'Regular updates at no extra cost',
+];
 
 export default function HowToBuyPage() {
   return (
     <>
-      <section className="hero-warm pt-32 pb-20 md:pt-40 md:pb-24 border-b border-border text-center">
-        <div className="site max-w-3xl mx-auto"><div className="pill-tag mb-6 mx-auto w-fit">How to Buy</div>
-          <h1 className="text-[clamp(36px,5vw,52px)] font-bold text-heading leading-[1.08] tracking-tight mb-5">Get started in <span className="text-grad">4 simple steps</span></h1>
-          <p className="text-body text-[16px] max-w-xl mx-auto">From first contact to going live — under 24 hours.</p>
+      <section className="min-h-[50vh] flex items-center justify-center bg-grid relative pt-[72px]">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#E8590C]/[0.03] blur-[100px] pointer-events-none" />
+        <div className="site max-w-3xl mx-auto relative z-10 text-center py-20">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+            <span className="inline-block uppercase tracking-[0.3em] text-[10px] font-bold text-[#E8590C] mb-6">● HOW TO BUY</span>
+            <h1 className="text-[clamp(36px,5vw,52px)] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-5">
+              Get started in{' '}
+              <span className="text-[#E8590C] font-medium" style={{ fontFamily: 'var(--font-playfair), serif', fontStyle: 'italic' }}>4 simple steps</span>
+            </h1>
+            <p className="text-[#6B7280] text-[18px] max-w-xl mx-auto font-medium">From first contact to going live — under 24 hours.</p>
+          </motion.div>
         </div>
       </section>
-      <section className="py-16 bg-cream">
+
+      <section className="py-20 bg-[#F5F5F7] border-y border-[#E5E7EB]">
         <div className="site max-w-[800px]">
-          {steps.map((s,i)=>{const Icon=s.icon; return (
-            <motion.div key={s.num} initial={{opacity:0,y:15}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:0.1*i}} className="flex gap-6 relative">
-              <div className="flex flex-col items-center"><div className="w-12 h-12 rounded-2xl bg-flame-bg flex items-center justify-center shrink-0 z-10"><Icon className="w-5 h-5 text-flame"/></div>{i<steps.length-1&&<div className="w-px flex-1 bg-border"/>}</div>
-              <div className="pb-12"><div className="text-[12px] font-bold text-flame uppercase tracking-wider mb-1">Step {s.num}</div><h3 className="text-[20px] font-semibold text-heading mb-2">{s.title}</h3><p className="text-body text-[15px] leading-relaxed max-w-md">{s.desc}</p></div>
-            </motion.div>
-          );})}
+          {steps.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.div key={s.num} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.12 * i, duration: 0.6 }} className="flex gap-8 relative">
+                <div className="flex flex-col items-center">
+                  <div className="w-16 h-16 rounded-full bg-white shadow-sm border border-[#E5E7EB] flex items-center justify-center shrink-0 z-10 hover:border-[#E8590C] transition-all duration-300 relative group">
+                    <Icon className="w-6 h-6 text-[#0A0A0A] group-hover:text-[#E8590C] transition-colors" />
+                  </div>
+                  {i < steps.length - 1 && <div className="w-[2px] flex-1 bg-gradient-to-b from-[#E5E7EB] to-transparent" />}
+                </div>
+                <div className="pb-16 pt-2">
+                  <div className="text-[12px] font-bold text-[#E8590C] uppercase tracking-[0.2em] mb-2">Step {s.num}</div>
+                  <h3 className="text-[24px] font-black text-[#0A0A0A] mb-3">{s.title}</h3>
+                  <p className="text-[#6B7280] text-[16px] leading-relaxed max-w-md">{s.desc}</p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
-      <section className="py-16 bg-white border-y border-border">
-        <div className="site max-w-[800px]"><div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div><h2 className="text-[28px] font-bold text-heading mb-4">Why a one-time license?</h2><p className="text-body text-[15px] leading-relaxed">Business software should be an asset you own, not a subscription trap.</p></div>
-          <div className="space-y-4">{bens.map(b=><div key={b} className="flex items-start gap-3"><CheckCircle className="w-5 h-5 text-flame mt-0.5 shrink-0"/><span className="text-[14px] text-heading font-medium">{b}</span></div>)}</div>
-        </div></div>
+
+      <section className="py-24 bg-white">
+        <div className="site max-w-[900px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+              <h2 className="text-[36px] font-black text-[#0A0A0A] mb-6">Why a one-time license?</h2>
+              <p className="text-[#6B7280] text-[18px] leading-relaxed font-medium">Business software should be an asset you own, not a subscription trap.</p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="space-y-5">
+              {bens.map((b, i) => (
+                <motion.div key={b} initial={{ opacity: 0, x: 15 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 * i }} className="flex items-start gap-4 group">
+                  <div className="w-8 h-8 rounded-full bg-[#FFF7ED] flex items-center justify-center mt-0.5 shrink-0 group-hover:bg-[#E8590C] transition-colors duration-300">
+                    <CheckCircle className="w-4 h-4 text-[#E8590C] group-hover:text-white transition-colors" />
+                  </div>
+                  <span className="text-[16px] text-[#0A0A0A] font-medium pt-1">{b}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
       </section>
-      <section className="py-16 bg-cream text-center"><div className="site max-w-xl"><h2 className="text-[28px] font-bold text-heading mb-4">Ready to get started?</h2><p className="text-body text-[16px] mb-8">Book a free demo and our team will walk you through.</p><Link href="/contact" className="btn-flame">Book a Free Demo</Link></div></section>
+
+      <section className="py-28 bg-[#0A0A0A] text-center relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: 'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+        }} />
+        <div className="site max-w-xl relative z-10">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <h2 className="text-[36px] font-black text-white mb-6">Ready to get started?</h2>
+            <p className="text-white/50 text-[18px] mb-10 font-medium">Book a free demo and our team will walk you through.</p>
+            <Link href="/contact" className="btn-blue px-10 py-4 text-[14px]">Book a Free Demo</Link>
+          </motion.div>
+        </div>
+      </section>
     </>
   );
 }

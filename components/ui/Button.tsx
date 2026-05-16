@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'blue' | 'dark' | 'outline' | 'white';
+  variant?: 'accent' | 'dark' | 'outline' | 'ghost';
   href?: string;
   onClick?: () => void;
   type?: 'button' | 'submit';
@@ -15,15 +15,15 @@ interface ButtonProps {
 }
 
 const variantClasses = {
-  blue: 'bg-brand-blue text-white shadow-[0_4px_20px_rgba(30,64,255,0.3)] hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(30,64,255,0.4)]',
-  dark: 'bg-black text-white hover:bg-brand-blue',
-  outline: 'bg-white text-black border-[1.5px] border-border hover:border-black',
-  white: 'bg-white text-black hover:translate-y-[-2px]',
+  accent: 'bg-gradient-to-r from-[#C2651A] to-[#D4793A] text-white shadow-[0_4px_20px_rgba(194,101,26,0.3)] hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgba(194,101,26,0.4)]',
+  dark: 'bg-[#1A1A24] text-white border border-[rgba(255,255,255,0.06)] hover:border-[rgba(194,101,26,0.2)]',
+  outline: 'bg-transparent text-heading border-[1.5px] border-[rgba(255,255,255,0.08)] hover:border-[rgba(194,101,26,0.3)] hover:text-[#D4793A]',
+  ghost: 'bg-transparent text-heading border-[1.5px] border-[rgba(255,255,255,0.06)] hover:border-[rgba(194,101,26,0.2)] hover:text-[#D4793A] hover:bg-[rgba(194,101,26,0.04)]',
 };
 
 export default function Button({
   children,
-  variant = 'blue',
+  variant = 'accent',
   href,
   onClick,
   type = 'button',

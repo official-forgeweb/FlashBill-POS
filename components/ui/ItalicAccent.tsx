@@ -8,7 +8,7 @@ export default function ItalicAccent({ children, light = false, className = '' }
   return (
     <em
       className={`font-serif not-italic italic font-medium ${
-        light ? 'text-white' : 'text-brand-blue'
+        light ? 'text-white' : 'text-grad'
       } ${className}`}
       style={{ fontStyle: 'italic' }}
     >
