@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check, Plus, ChevronDown, ArrowRight } from 'lucide-react';
 import { features, featureCategories } from '@/lib/data/features';
 import Link from 'next/link';
+import FeaturesPreloader from '@/components/ui/FeaturesPreloader';
 
 export default function FeaturesPage() {
   const [cat, setCat] = useState('all');
@@ -12,14 +13,18 @@ export default function FeaturesPage() {
 
   return (
     <>
-      <section className="min-h-[50vh] flex items-center justify-center bg-grid relative pt-[72px]">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#E8590C]/[0.03] blur-[100px] pointer-events-none" />
+      <FeaturesPreloader />
+      <section className="min-h-[50vh] flex items-center justify-center bg-white relative pt-[72px] overflow-hidden">
+        {/* Decorative background grid and glow */}
+        <div className="absolute inset-0 bg-grid opacity-50" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#E8590C]/[0.05] blur-[100px] pointer-events-none" />
+        
         <div className="site max-w-3xl relative z-10 text-center py-20">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <span className="inline-block uppercase tracking-[0.3em] text-[10px] font-bold text-[#E8590C] mb-6">● FEATURES</span>
-            <h1 className="text-[clamp(36px,5vw,52px)] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-5">
+            <span className="inline-block uppercase tracking-[0.3em] text-[10px] font-bold text-[#E8590C] mb-6">● EXPLORE THE SYSTEM</span>
+            <h1 className="text-[clamp(36px,5vw,56px)] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-5">
               Everything your business{' '}
-              <span className="text-[#E8590C] font-medium" style={{ fontFamily: 'var(--font-playfair), serif', fontStyle: 'italic' }}>needs</span>
+              <span className="text-[#E8590C] font-medium block md:inline-block" style={{ fontFamily: 'var(--font-caveat), cursive', fontStyle: 'normal' }}>needs</span>
             </h1>
             <p className="text-[#6B7280] text-[18px] max-w-xl mx-auto font-medium">
               13+ powerful features for billing, inventory, staff management, and reporting.
@@ -57,27 +62,29 @@ export default function FeaturesPage() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     layout
-                    className={`bg-white border rounded-2xl overflow-hidden transition-all duration-400 ${
-                      open ? 'border-[#E8590C] shadow-[0_10px_30px_rgba(232,89,12,0.08)]' : 'border-[#E5E7EB] hover:border-[#D1D5DB] hover:shadow-sm'
+                    className={`group bg-[#FAFAFA] border rounded-[20px] overflow-hidden transition-all duration-400 ${
+                      open ? 'bg-white border-[#E8590C]/50 shadow-[0_20px_40px_-10px_rgba(232,89,12,0.15)] scale-[1.01]' : 'border-[#E5E7EB] hover:bg-white hover:border-[#E8590C]/30 hover:shadow-[0_15px_35px_-10px_rgba(232,89,12,0.1)] hover:-translate-y-0.5'
                     }`}
                   >
-                    <button onClick={() => setExp(open ? null : f.id)} className="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer group">
-                      <div className="flex items-center gap-4">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 ${
-                          f.included ? 'bg-[#FFF7ED] text-[#E8590C]' : 'bg-[#F3F4F6] text-[#9CA3AF]'
+                    <button onClick={() => setExp(open ? null : f.id)} className="w-full flex items-center justify-between p-5 md:p-7 text-left cursor-pointer">
+                      <div className="flex items-center gap-5">
+                        <div className={`w-12 h-12 rounded-[14px] border flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm ${
+                          f.included ? 'bg-[#FFF7ED] text-[#E8590C] border-[#E8590C]/20' : 'bg-white text-[#9CA3AF] border-[#E5E7EB] group-hover:border-[#E8590C]/20 group-hover:text-[#E8590C]'
                         }`}>
-                          {f.included ? <Check className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                          {f.included ? <Check className="w-6 h-6" /> : <Plus className="w-6 h-6" />}
                         </div>
                         <div>
-                          <h3 className="text-[16px] font-bold text-[#0A0A0A]">{f.name}</h3>
-                          <span className={`text-[12px] font-bold uppercase tracking-[0.1em] ${f.included ? 'text-[#E8590C]' : 'text-[#6B7280]'}`}>
+                          <h3 className="text-[17px] font-bold text-[#0A0A0A] group-hover:text-[#E8590C] transition-colors duration-300">{f.name}</h3>
+                          <span className={`text-[10px] font-bold uppercase tracking-[0.15em] mt-1 inline-block ${f.included ? 'text-[#E8590C]' : 'text-[#9CA3AF]'}`}>
                             {f.included ? 'Included' : 'Add-on'}
                           </span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-4">
-                        <span className="text-[15px] font-bold text-[#E8590C] hidden sm:block">{f.price}</span>
-                        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${open ? 'rotate-180 text-[#E8590C]' : 'text-[#9CA3AF]'}`} />
+                      <div className="flex items-center gap-5">
+                        <span className="text-[18px] font-black text-[#0A0A0A] hidden sm:block">{f.price}</span>
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${open ? 'bg-[#FFF7ED]' : 'bg-[#F3F4F6] group-hover:bg-[#E8590C]'}`}>
+                          <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${open ? 'rotate-180 text-[#E8590C]' : 'text-[#9CA3AF] group-hover:text-white'}`} />
+                        </div>
                       </div>
                     </button>
                     <AnimatePresence>
@@ -89,8 +96,10 @@ export default function FeaturesPage() {
                           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
-                          <div className="px-6 pb-6 pl-[72px] border-t border-[#E5E7EB] pt-5">
-                            <p className="text-[#6B7280] text-[15px] leading-relaxed">{f.description}</p>
+                          <div className="px-5 md:px-7 pb-7 pl-[88px] border-t border-[#E5E7EB]/50 pt-5 relative">
+                            {/* Decorative blur in expanded state */}
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#FFE4E6]/40 via-[#FFF7ED]/40 to-transparent opacity-100 rounded-full blur-xl pointer-events-none" />
+                            <p className="text-[#6B7280] text-[14px] leading-[1.6] max-w-2xl relative z-10">{f.description}</p>
                           </div>
                         </motion.div>
                       )}

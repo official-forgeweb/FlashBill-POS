@@ -5,19 +5,24 @@ import { Check, ChevronDown, Crown } from 'lucide-react';
 import { pricingPlans, addOns, pricingFAQs } from '@/lib/data/pricing';
 import { features } from '@/lib/data/features';
 import Link from 'next/link';
+import PricingPreloader from '@/components/ui/PricingPreloader';
 
 export default function PricingPage() {
   const [faq, setFaq] = useState<number | null>(null);
   return (
     <>
-      <section className="min-h-[50vh] flex items-center justify-center bg-grid relative pt-[72px]">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#E8590C]/[0.03] blur-[100px] pointer-events-none" />
+      <PricingPreloader />
+      <section className="min-h-[50vh] flex items-center justify-center bg-white relative pt-[72px] overflow-hidden">
+        {/* Decorative background grid and glow */}
+        <div className="absolute inset-0 bg-grid opacity-50" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#E8590C]/[0.05] blur-[100px] pointer-events-none" />
+        
         <div className="site max-w-3xl mx-auto relative z-10 text-center py-20">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <span className="inline-block uppercase tracking-[0.3em] text-[10px] font-bold text-[#E8590C] mb-6">● PRICING</span>
-            <h1 className="text-[clamp(36px,5vw,52px)] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-5">
+            <span className="inline-block uppercase tracking-[0.3em] text-[10px] font-bold text-[#E8590C] mb-6">● PRICING PLANS</span>
+            <h1 className="text-[clamp(36px,5vw,56px)] font-black text-[#0A0A0A] leading-[1.1] tracking-tight mb-5">
               Simple, honest{' '}
-              <span className="text-[#E8590C] font-medium" style={{ fontFamily: 'var(--font-playfair), serif', fontStyle: 'italic' }}>one-time pricing</span>
+              <span className="text-[#E8590C] font-medium block md:inline-block" style={{ fontFamily: 'var(--font-caveat), cursive', fontStyle: 'normal' }}>one-time pricing</span>
             </h1>
             <p className="text-[#6B7280] text-[18px] max-w-xl mx-auto font-medium">No subscriptions. No hidden fees. Pay once, own forever.</p>
           </motion.div>
@@ -33,10 +38,10 @@ export default function PricingPage() {
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.12 * i, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className={`rounded-2xl p-8 flex flex-col relative group transition-all duration-400 ${
+                className={`rounded-[24px] p-8 flex flex-col relative group transition-all duration-500 ${
                   p.popular
-                    ? 'bg-[#0A0A0A] text-white py-12 scale-100 lg:scale-105 z-10 shadow-2xl'
-                    : 'bg-white border border-[#E5E7EB] hover:border-[#E8590C]/30 hover:shadow-lg z-0'
+                    ? 'bg-[#0A0A0A] text-white py-12 scale-100 lg:scale-105 z-10 shadow-[0_30px_60px_-15px_rgba(232,89,12,0.2)] border border-[#E8590C]/20'
+                    : 'bg-[#FAFAFA] border border-[#E5E7EB] hover:bg-white hover:border-[#E8590C]/30 hover:shadow-[0_20px_40px_-10px_rgba(232,89,12,0.1)] hover:-translate-y-1 z-0'
                 }`}
               >
                 {p.popular && (
@@ -97,7 +102,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="py-16 bg-[#F5F5F7] border-y border-[#E5E7EB]">
+      <section className="py-16 bg-[#FAFAFA] border-y border-[#E5E7EB]">
         <div className="site max-w-[1000px]">
           <h2 className="text-[32px] font-black text-[#0A0A0A] mb-10 text-center">Add-on Modules</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -116,17 +121,23 @@ export default function PricingPage() {
           <h2 className="text-[32px] font-black text-[#0A0A0A] text-center mb-12">Frequently Asked Questions</h2>
           <div className="space-y-4">
             {pricingFAQs.map((q, i) => (
-              <div key={i} className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
-                faq === i ? 'border-[#E8590C] bg-[#FFF7ED]/20 shadow-sm' : 'border-[#E5E7EB] bg-white hover:border-[#D1D5DB]'
+              <div key={i} className={`group bg-[#FAFAFA] border rounded-[20px] overflow-hidden transition-all duration-400 ${
+                faq === i ? 'bg-white border-[#E8590C]/50 shadow-[0_20px_40px_-10px_rgba(232,89,12,0.15)] scale-[1.01]' : 'border-[#E5E7EB] hover:bg-white hover:border-[#E8590C]/30 hover:shadow-[0_15px_35px_-10px_rgba(232,89,12,0.1)] hover:-translate-y-0.5'
               }`}>
-                <button onClick={() => setFaq(faq === i ? null : i)} className="w-full flex items-center justify-between p-6 text-left cursor-pointer">
-                  <span className="text-[16px] font-bold text-[#0A0A0A] pr-4">{q.question}</span>
-                  <ChevronDown className={`w-5 h-5 transition-transform duration-300 shrink-0 ${faq === i ? 'rotate-180 text-[#E8590C]' : 'text-[#9CA3AF]'}`} />
+                <button onClick={() => setFaq(faq === i ? null : i)} className="w-full flex items-center justify-between p-6 md:p-7 text-left cursor-pointer">
+                  <span className="text-[17px] font-bold text-[#0A0A0A] pr-4 group-hover:text-[#E8590C] transition-colors duration-300">{q.question}</span>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 shrink-0 ${faq === i ? 'bg-[#FFF7ED]' : 'bg-[#F3F4F6] group-hover:bg-[#E8590C]'}`}>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${faq === i ? 'rotate-180 text-[#E8590C]' : 'text-[#9CA3AF] group-hover:text-white'}`} />
+                  </div>
                 </button>
                 <AnimatePresence>
                   {faq === i && (
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }} className="overflow-hidden">
-                      <p className="px-6 pb-6 text-[#6B7280] text-[15px] leading-relaxed border-t border-[#E5E7EB] pt-4">{q.answer}</p>
+                      <div className="px-6 md:px-7 pb-7 border-t border-[#E5E7EB]/50 pt-5 relative">
+                        {/* Decorative blur in expanded state */}
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#FFE4E6]/40 via-[#FFF7ED]/40 to-transparent opacity-100 rounded-full blur-xl pointer-events-none" />
+                        <p className="text-[#6B7280] text-[15px] leading-[1.6] relative z-10">{q.answer}</p>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
