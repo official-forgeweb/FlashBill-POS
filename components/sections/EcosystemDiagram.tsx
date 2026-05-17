@@ -92,38 +92,57 @@ export default function EcosystemDiagram() {
 
           {/* Right side — Sketch image */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative"
+            initial={{ opacity: 0, x: 50, rotateY: 5 }}
+            animate={inView ? { opacity: 1, x: 0, rotateY: 0 } : {}}
+            transition={{ duration: 1, type: "spring", stiffness: 60, delay: 0.3 }}
+            className="relative perspective-[1000px]"
           >
-            <Image
-              src="/ecosystem-sketch.png"
-              alt="FlashBill Ecosystem — Hotels, Restaurants, Cafes connected"
-              width={700}
-              height={500}
-              className="w-full h-auto mix-blend-multiply"
-            />
+            <motion.div
+              animate={{ y: [-8, 8, -8] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative"
+            >
+              {/* Subtle glow behind the sketch */}
+              <div className="absolute inset-0 bg-[#E8590C]/[0.04] blur-[80px] rounded-full pointer-events-none" />
+              
+              <Image
+                src="/ecosystem-sketch.png"
+                alt="FlashBill Ecosystem — Hotels, Restaurants, Cafes connected"
+                width={800}
+                height={600}
+                className="w-full h-auto mix-blend-multiply drop-shadow-2xl relative z-10"
+              />
+            </motion.div>
 
             {/* Floating labels with pin markers */}
-            {labels.map((label) => (
+            {labels.map((label, i) => (
               <motion.div
                 key={label.text}
-                initial={{ opacity: 0, y: 12, scale: 0.9 }}
+                initial={{ opacity: 0, y: 15, scale: 0.8 }}
                 animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                transition={{ delay: label.delay, duration: 0.5, type: 'spring', stiffness: 200 }}
-                className="absolute flex items-center gap-1.5"
+                transition={{ delay: label.delay, duration: 0.6, type: 'spring', bounce: 0.4 }}
+                className="absolute flex items-center gap-2 z-20"
                 style={{ left: label.x, top: label.y }}
               >
-                <div className="relative">
-                  <div className="w-5 h-5 rounded-full bg-[#E8590C] flex items-center justify-center shadow-lg shadow-[rgba(232,89,12,0.3)]">
-                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                <motion.div 
+                  animate={{ y: [0, -4, 0] }}
+                  transition={{ duration: 3, delay: i * 0.2, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative"
+                >
+                  <div className="w-6 h-6 rounded-full bg-[#E8590C] flex items-center justify-center shadow-lg shadow-[#E8590C]/40 relative z-10">
+                    <div className="w-2 h-2 rounded-full bg-white" />
+                    {/* Pinging ring */}
+                    <div className="absolute inset-0 rounded-full bg-[#E8590C] animate-ping opacity-60" />
                   </div>
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-r-[4px] border-t-[5px] border-l-transparent border-r-transparent border-t-[#E8590C]" />
-                </div>
-                <div className="bg-[#F59E0B] text-white px-3 py-1 rounded-md shadow-md">
-                  <span className="text-[9px] font-black uppercase tracking-[0.08em]">{label.text}</span>
-                </div>
+                  <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[5px] border-r-[5px] border-t-[6px] border-l-transparent border-r-transparent border-t-[#E8590C]" />
+                </motion.div>
+                <motion.div 
+                  animate={{ y: [0, -3, 0] }}
+                  transition={{ duration: 3, delay: i * 0.2 + 0.1, repeat: Infinity, ease: "easeInOut" }}
+                  className="bg-white/95 backdrop-blur-sm border border-[#E5E7EB] text-[#0A0A0A] px-3.5 py-1.5 rounded-lg shadow-xl shadow-black/5"
+                >
+                  <span className="text-[10px] font-black uppercase tracking-[0.1em]">{label.text}</span>
+                </motion.div>
               </motion.div>
             ))}
           </motion.div>

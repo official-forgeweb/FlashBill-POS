@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Inter, Playfair_Display, Caveat } from 'next/font/google';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import Preloader from '@/components/ui/Preloader';
 import './globals.css';
 
 const inter = Inter({
@@ -16,6 +17,13 @@ const playfair = Playfair_Display({
   weight: ['400', '500', '600', '700', '800', '900'],
   style: ['normal', 'italic'],
   variable: '--font-playfair',
+  display: 'swap',
+});
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-caveat',
   display: 'swap',
 });
 
@@ -42,8 +50,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable} ${caveat.variable}`}>
       <body className="min-h-screen flex flex-col font-sans antialiased bg-[#FAFAFA] text-[#0A0A0A]">
+        <Preloader />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

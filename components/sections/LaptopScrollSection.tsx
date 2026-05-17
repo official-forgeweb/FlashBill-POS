@@ -68,46 +68,46 @@ export default function LaptopScrollSection() {
             className="hidden md:block pointer-events-none"
           >
             {/* Top-left — near left edge of screen */}
-            <div className="absolute -top-20 -left-[140px] lg:-left-[160px] flex items-end gap-2 z-30">
-              <div className="text-right">
-                <p className="text-[18px] lg:text-[22px] text-[#E8590C] font-medium" style={{ fontFamily: 'var(--font-playfair), serif', fontStyle: 'italic' }}>
+            <div className="absolute top-8 -left-[200px] lg:-left-[280px] flex items-start gap-3 z-30">
+              <div className="text-right pt-2">
+                <p className="text-[28px] lg:text-[36px] text-[#E8590C] font-medium leading-none" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
                   Offline Billing
                 </p>
-                <p className="uppercase text-[8px] tracking-[0.2em] text-black/35 font-bold mt-0.5">No internet needed</p>
+                <p className="uppercase text-[8px] tracking-[0.2em] text-black/35 font-bold mt-1">No internet needed</p>
               </div>
-              <CurlyArrow direction="bottom-right" />
+              <CurlyArrow direction="top-left" />
             </div>
 
             {/* Top-right — near right edge of screen */}
-            <div className="absolute -top-16 -right-[140px] lg:-right-[160px] flex items-end gap-2 z-30">
-              <CurlyArrow direction="bottom-left" />
-              <div className="text-left">
-                <p className="text-[18px] lg:text-[22px] text-[#E8590C] font-medium" style={{ fontFamily: 'var(--font-playfair), serif', fontStyle: 'italic' }}>
+            <div className="absolute top-10 -right-[200px] lg:-right-[280px] flex items-start gap-3 z-30">
+              <CurlyArrow direction="top-right" />
+              <div className="text-left pt-2">
+                <p className="text-[28px] lg:text-[36px] text-[#E8590C] font-medium leading-none" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
                   Real-time Reports
                 </p>
-                <p className="uppercase text-[8px] tracking-[0.2em] text-black/35 font-bold mt-0.5">Hourly analytics</p>
+                <p className="uppercase text-[8px] tracking-[0.2em] text-black/35 font-bold mt-1">Hourly analytics</p>
               </div>
             </div>
 
             {/* Bottom-left */}
-            <div className="absolute -bottom-16 -left-[130px] lg:-left-[150px] flex items-start gap-2 z-30">
-              <div className="text-right">
-                <p className="text-[18px] lg:text-[22px] text-[#E8590C] font-medium" style={{ fontFamily: 'var(--font-playfair), serif', fontStyle: 'italic' }}>
+            <div className="absolute bottom-8 -left-[190px] lg:-left-[260px] flex items-end gap-3 z-30">
+              <div className="text-right pb-2">
+                <p className="text-[28px] lg:text-[36px] text-[#E8590C] font-medium leading-none" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
                   QR Ordering
                 </p>
-                <p className="uppercase text-[8px] tracking-[0.2em] text-black/35 font-bold mt-0.5">Customer self-order</p>
+                <p className="uppercase text-[8px] tracking-[0.2em] text-black/35 font-bold mt-1">Customer self-order</p>
               </div>
-              <CurlyArrow direction="top-right" />
+              <CurlyArrow direction="bottom-left" />
             </div>
 
             {/* Bottom-right */}
-            <div className="absolute -bottom-20 -right-[130px] lg:-right-[150px] flex items-start gap-2 z-30">
-              <CurlyArrow direction="top-left" />
-              <div className="text-left">
-                <p className="text-[18px] lg:text-[22px] text-[#E8590C] font-medium" style={{ fontFamily: 'var(--font-playfair), serif', fontStyle: 'italic' }}>
+            <div className="absolute bottom-12 -right-[190px] lg:-right-[260px] flex items-end gap-3 z-30">
+              <CurlyArrow direction="bottom-right" />
+              <div className="text-left pb-2">
+                <p className="text-[28px] lg:text-[36px] text-[#E8590C] font-medium leading-none" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
                   Kitchen Display
                 </p>
-                <p className="uppercase text-[8px] tracking-[0.2em] text-black/35 font-bold mt-0.5">Smart KOT system</p>
+                <p className="uppercase text-[8px] tracking-[0.2em] text-black/35 font-bold mt-1">Smart KOT system</p>
               </div>
             </div>
           </motion.div>
