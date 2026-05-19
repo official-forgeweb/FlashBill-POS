@@ -17,7 +17,6 @@ const principles = [
 ];
 
 import { PageLoaderWrapper } from '@/components/ui/PageLoaderWrapper';
-import { ComparisonSection } from '@/components/comparison/ComparisonSection';
 
 export default function AboutPage() {
   return (
@@ -91,9 +90,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Comparison */}
-      <ComparisonSection />
 
       {/* ForgeWeb */}
       <section className="py-28 bg-[#0A0A0A] text-center relative overflow-hidden">
