@@ -49,7 +49,7 @@ export default function Preloader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="absolute inset-0 flex flex-col items-center justify-center z-10 mix-blend-difference text-white"
+            className="absolute inset-0 flex flex-col items-center justify-center z-10 text-white"
           >
             <div className="overflow-hidden">
               <motion.h1
@@ -58,7 +58,7 @@ export default function Preloader() {
                 transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1], delay: 0.2 }}
                 className="text-5xl md:text-7xl font-bold tracking-tight"
               >
-                <span className="text-[#E8590C]">Flash</span>Bill.
+                <span className="text-[#E8590C]">Flash</span><span className="text-[#FFFFFF]">Bill.</span>
               </motion.h1>
             </div>
             

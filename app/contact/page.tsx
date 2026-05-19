@@ -10,9 +10,11 @@ const info = [
   { icon: MapPin, label: 'Location', value: 'India', href: null },
 ];
 
+import { PageLoaderWrapper } from '@/components/ui/PageLoaderWrapper';
+
 export default function ContactPage() {
   return (
-    <>
+    <PageLoaderWrapper page="contact">
       <section className="min-h-[50vh] flex items-center justify-center bg-grid relative pt-[72px]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#E8590C]/[0.03] blur-[100px] pointer-events-none" />
         <div className="site max-w-3xl relative z-10 text-center py-20">
@@ -82,6 +84,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </>
+    </PageLoaderWrapper>
   );
 }

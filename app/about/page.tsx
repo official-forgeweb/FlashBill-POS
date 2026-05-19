@@ -16,9 +16,12 @@ const principles = [
   { icon: Zap, title: 'Blazing Fast', desc: 'Local processing. Zero latency.' },
 ];
 
+import { PageLoaderWrapper } from '@/components/ui/PageLoaderWrapper';
+import { ComparisonSection } from '@/components/comparison/ComparisonSection';
+
 export default function AboutPage() {
   return (
-    <>
+    <PageLoaderWrapper page="about">
       {/* Hero */}
       <section className="min-h-[60vh] flex items-center justify-center bg-grid relative pt-[72px]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#E8590C]/[0.03] blur-[100px] pointer-events-none" />
@@ -89,6 +92,9 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Comparison */}
+      <ComparisonSection />
+
       {/* ForgeWeb */}
       <section className="py-28 bg-[#0A0A0A] text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -109,6 +115,6 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
-    </>
+    </PageLoaderWrapper>
   );
 }
