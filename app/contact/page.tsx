@@ -2,6 +2,8 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MessageCircle, MapPin } from 'lucide-react';
 import ContactForm from '@/components/forms/ContactForm';
+import TrustBadges from '@/components/trust/TrustBadges';
+
 
 const info = [
   { icon: Mail, label: 'Email', value: 'hello@forgeweb.in', href: 'mailto:hello@forgeweb.in' },
@@ -10,9 +12,11 @@ const info = [
   { icon: MapPin, label: 'Location', value: 'India', href: null },
 ];
 
+import { PageLoaderWrapper } from '@/components/ui/PageLoaderWrapper';
+
 export default function ContactPage() {
   return (
-    <>
+    <PageLoaderWrapper page="contact">
       <section className="min-h-[50vh] flex items-center justify-center bg-grid relative pt-[72px]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#E8590C]/[0.03] blur-[100px] pointer-events-none" />
         <div className="site max-w-3xl relative z-10 text-center py-20">
@@ -68,6 +72,8 @@ export default function ContactPage() {
                   We typically respond within 2-4 hours.
                 </p>
               </div>
+
+              <TrustBadges variant="contact" />
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="lg:col-span-3">
@@ -82,6 +88,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </>
+    </PageLoaderWrapper>
   );
 }

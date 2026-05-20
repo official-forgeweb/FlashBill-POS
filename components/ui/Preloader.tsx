@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { LogoIcon } from '@/components/ui/Logo';
 
 export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
@@ -49,16 +50,25 @@ export default function Preloader() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
-            className="absolute inset-0 flex flex-col items-center justify-center z-10 mix-blend-difference text-white"
+            className="absolute inset-0 flex flex-col items-center justify-center z-10"
           >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              className="mb-5"
+            >
+              <LogoIcon className="w-16 h-16 md:w-20 md:h-20" variant="dark" />
+            </motion.div>
+            
             <div className="overflow-hidden">
               <motion.h1
                 initial={{ y: '100%' }}
                 animate={{ y: 0 }}
-                transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1], delay: 0.2 }}
-                className="text-5xl md:text-7xl font-bold tracking-tight"
+                transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1], delay: 0.25 }}
+                className="text-4xl md:text-6xl font-black tracking-tight"
               >
-                <span className="text-[#E8590C]">Flash</span>Bill.
+                <span className="text-white">Flash</span><span className="text-[#E8590C]">Bill</span><span className="text-[#E8590C] font-black">.</span>
               </motion.h1>
             </div>
             

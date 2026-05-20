@@ -2,10 +2,12 @@ import HeroTextBlock from '@/components/sections/HeroTextBlock';
 import LaptopScrollSection from '@/components/sections/LaptopScrollSection';
 import EcosystemDiagram from '@/components/sections/EcosystemDiagram';
 import KeyHighlights from '@/components/sections/KeyHighlights';
-import FeaturesPreview from '@/components/sections/FeaturesPreview';
 import PricingPreview from '@/components/sections/PricingPreview';
 import HowToBuySteps from '@/components/sections/HowToBuySteps';
 import ContactCTA from '@/components/sections/ContactCTA';
+import { FAQSection } from '@/components/sections/FAQSection';
+import { TestimonialsSection } from '@/components/testimonials/TestimonialsSection';
+import BlogPreviewSection from '@/components/blog/BlogPreviewSection';
 
 export default function HomePage() {
   return (
@@ -17,10 +19,13 @@ export default function HomePage() {
 
       {/* Existing sections below hero */}
       <KeyHighlights />
-      <FeaturesPreview />
+      <TestimonialsSection />
       <PricingPreview />
       <HowToBuySteps />
+      <FAQSection />
+      <BlogPreviewSection />
       <ContactCTA />
     </>
   );
 }
+

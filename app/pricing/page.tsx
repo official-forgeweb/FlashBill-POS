@@ -6,6 +6,8 @@ import { pricingPlans, addOns, pricingFAQs } from '@/lib/data/pricing';
 import { features } from '@/lib/data/features';
 import Link from 'next/link';
 import PricingPreloader from '@/components/ui/PricingPreloader';
+import TrustBadges from '@/components/trust/TrustBadges';
+
 
 export default function PricingPage() {
   const [faq, setFaq] = useState<number | null>(null);
@@ -71,6 +73,7 @@ export default function PricingPage() {
               </motion.div>
             ))}
           </div>
+          <TrustBadges variant="pricing" />
         </div>
       </section>
 
