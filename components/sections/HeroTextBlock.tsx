@@ -1,11 +1,16 @@
 'use client';
 
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
+
+
 export default function HeroTextBlock() {
+  const heroRef = useRef<HTMLDivElement>(null);
+
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center bg-grid relative overflow-hidden pt-[72px]">
+    <section ref={heroRef} className="min-h-screen flex flex-col justify-center items-center bg-grid relative overflow-hidden pt-[72px]">
       {/* Corner decorative markers */}
       <div className="absolute top-28 left-8 w-3 h-3 rounded-full border-2 border-[#E8590C]/20 hidden md:block" />
       <div className="absolute top-28 right-8 w-3 h-3 rounded-full border-2 border-[#E8590C]/20 hidden md:block" />

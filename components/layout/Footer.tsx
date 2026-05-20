@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Zap } from 'lucide-react';
+import Logo from '@/components/ui/Logo';
 
 const cols = {
   Product: [
@@ -31,13 +31,8 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 mb-6 group">
-              <div className="w-9 h-9 rounded-xl bg-[#E8590C] flex items-center justify-center group-hover:scale-105 transition-transform">
-                <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
-              </div>
-              <span className="text-[18px] font-bold text-white">
-                Flash<span className="text-[#F97316]">Bill</span>
-              </span>
+            <Link href="/" className="mb-6 block">
+              <Logo variant="dark" />
             </Link>
             <p className="text-[14px] text-white/50 leading-relaxed max-w-[240px]">
               Offline-first POS &amp; billing software by ForgeWeb. Simple, reliable, and yours forever.

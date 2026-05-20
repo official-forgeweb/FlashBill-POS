@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { Zap } from 'lucide-react';
+import { LogoIcon } from '@/components/ui/Logo';
 
 export default function FeaturesPreloader() {
   const [isLoading, setIsLoading] = useState(true);
@@ -48,7 +48,7 @@ export default function FeaturesPreloader() {
                 transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
                 className="absolute inset-0 border-[3px] border-[#E8590C]/20 border-t-[#E8590C] rounded-full"
               />
-              <Zap className="w-6 h-6 text-[#E8590C] fill-[#E8590C]/20" />
+              <LogoIcon className="w-6 h-6" variant="default" />
             </div>
             
             <div className="overflow-hidden">

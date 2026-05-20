@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { Info, MessageSquare } from 'lucide-react';
+import { Info, MessageSquare, BookOpen, FileText } from 'lucide-react';
 
 const PAGE_CONFIG = {
   about: {
@@ -13,9 +13,17 @@ const PAGE_CONFIG = {
     icon: MessageSquare,
     text: 'LOADING CONTACT...',
   },
+  blog: {
+    icon: BookOpen,
+    text: 'LOADING BLOG...',
+  },
+  'blog-post': {
+    icon: FileText,
+    text: 'LOADING ARTICLE...',
+  },
 };
 
-export function PageLoaderWrapper({ page, children }: { page: 'about' | 'contact', children: React.ReactNode }) {
+export function PageLoaderWrapper({ page, children }: { page: 'about' | 'contact' | 'blog' | 'blog-post', children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const config = PAGE_CONFIG[page];
   const Icon = config.icon;

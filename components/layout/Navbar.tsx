@@ -3,13 +3,15 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import Logo from '@/components/ui/Logo';
 
 const links = [
   { href: '/features', label: 'Features' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/how-to-buy', label: 'How to Buy' },
   { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -42,17 +44,8 @@ export default function Navbar() {
         }`}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group pl-2">
-          <motion.div
-            whileHover={{ rotate: 10, scale: 1.1 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-            className="w-8 h-8 rounded-lg bg-[#E8590C] flex items-center justify-center shadow-md shadow-[rgba(232,89,12,0.25)]"
-          >
-            <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
-          </motion.div>
-          <span className="text-[18px] font-bold text-[#0A0A0A]">
-            Flash<span className="text-[#E8590C]">Bill</span>
-          </span>
+        <Link href="/" className="pl-2">
+          <Logo variant="default" />
         </Link>
 
         {/* Desktop links */}
@@ -77,13 +70,10 @@ export default function Navbar() {
         </div>
 
         {/* CTA */}
-        <div className="hidden lg:flex items-center gap-3 pr-2">
-          <Link href="/contact" className="text-[13px] font-semibold text-[#6B7280] hover:text-[#0A0A0A] transition-colors">
-            Sign in
-          </Link>
+        <div className="hidden lg:flex items-center pr-2">
           <Link
             href="/contact"
-            className="bg-[#E8590C] text-white text-[11px] font-bold uppercase tracking-[0.08em] px-5 py-2 rounded-full shadow-md shadow-[rgba(232,89,12,0.2)] hover:bg-[#D14D0A] hover:shadow-lg transition-all duration-300"
+            className="bg-[#E8590C] text-white text-[11px] font-bold uppercase tracking-[0.08em] px-5 py-2 rounded-full shadow-md shadow-[rgba(232,89,12,0.25)] hover:bg-[#D14D0A] hover:shadow-lg transition-all duration-300"
           >
             Get Started
           </Link>
@@ -119,7 +109,6 @@ export default function Navbar() {
                 </motion.div>
               ))}
               <div className="mt-3 flex flex-col gap-2">
-                <Link href="/contact" className="btn-outline justify-center py-2.5 text-[13px]">Sign in</Link>
                 <Link href="/contact" className="btn-blue justify-center py-2.5 text-[13px]">Get Started</Link>
               </div>
             </div>

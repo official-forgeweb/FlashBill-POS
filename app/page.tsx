@@ -7,6 +7,7 @@ import HowToBuySteps from '@/components/sections/HowToBuySteps';
 import ContactCTA from '@/components/sections/ContactCTA';
 import { FAQSection } from '@/components/sections/FAQSection';
 import { TestimonialsSection } from '@/components/testimonials/TestimonialsSection';
+import BlogPreviewSection from '@/components/blog/BlogPreviewSection';
 
 export default function HomePage() {
   return (
@@ -22,6 +23,7 @@ export default function HomePage() {
       <PricingPreview />
       <HowToBuySteps />
       <FAQSection />
+      <BlogPreviewSection />
       <ContactCTA />
     </>
   );

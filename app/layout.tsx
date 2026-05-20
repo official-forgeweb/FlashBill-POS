@@ -3,6 +3,7 @@ import { Inter, Playfair_Display, Caveat } from 'next/font/google';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Preloader from '@/components/ui/Preloader';
+import WhatsAppButton from '@/components/whatsapp/WhatsAppButton';
 import './globals.css';
 
 const inter = Inter({
@@ -56,6 +57,10 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <WhatsAppButton 
+          phoneNumber="918510882886"
+          message="Hi, I'm interested in FlashBill POS!"
+        />
       </body>
     </html>
   );

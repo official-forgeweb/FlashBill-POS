@@ -2,6 +2,8 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MessageCircle, MapPin } from 'lucide-react';
 import ContactForm from '@/components/forms/ContactForm';
+import TrustBadges from '@/components/trust/TrustBadges';
+
 
 const info = [
   { icon: Mail, label: 'Email', value: 'hello@forgeweb.in', href: 'mailto:hello@forgeweb.in' },
@@ -70,6 +72,8 @@ export default function ContactPage() {
                   We typically respond within 2-4 hours.
                 </p>
               </div>
+
+              <TrustBadges variant="contact" />
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="lg:col-span-3">
