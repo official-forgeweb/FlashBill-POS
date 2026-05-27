@@ -78,7 +78,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden lg:flex items-center gap-3 pr-2">
-          <Link href="/contact" className="text-[13px] font-semibold text-[#6B7280] hover:text-[#0A0A0A] transition-colors">
+          <Link href="/signup" className="text-[13px] font-semibold text-[#6B7280] hover:text-[#0A0A0A] transition-colors">
             Sign in
           </Link>
           <Link
